@@ -1,7 +1,7 @@
 #!/bin/sh
 # Regenerates packaging/homebrew/marmot.rb for the current release zip.
 # Run after `make release`, then copy the file into the tap repo:
-#   github.com/Kasakir-AI/homebrew-marmot → Casks/marmot.rb
+#   github.com/Kasakir-AI/homebrew-tap → Casks/marmot.rb
 set -e
 cd "$(dirname "$0")/.."
 
@@ -12,7 +12,7 @@ SHA=$(shasum -a 256 "$ZIP" | awk '{print $1}')
 
 cat > packaging/homebrew/marmot.rb << EOF
 # Homebrew cask for Marmot.
-# Lives in the tap repo: github.com/Kasakir-AI/homebrew-marmot (Casks/marmot.rb)
+# Lives in the tap repo: github.com/Kasakir-AI/homebrew-tap (Casks/marmot.rb)
 # Regenerate for each release with: sh scripts/make-cask.sh
 cask "marmot" do
   version "$VERSION"
@@ -50,4 +50,4 @@ end
 EOF
 
 echo "packaging/homebrew/marmot.rb updated for $VERSION ($SHA)"
-echo "Copy it to the homebrew-marmot repo as Casks/marmot.rb and push."
+echo "Copy it to the homebrew-tap repo as Casks/marmot.rb and push."

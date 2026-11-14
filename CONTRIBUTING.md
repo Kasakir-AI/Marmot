@@ -77,7 +77,7 @@ Or double-click `scripts/Release Marmot.command` in Finder.
 - main is clean and current, and CI passed on it.
 - The tag is unused, and `gh` is signed in.
 - Both repos commit with the no-reply email.
-- The Homebrew tap (`../homebrew-marmot`) is clean.
+- The Homebrew tap (`../homebrew-tap`, shared with other Kasakir-AI apps) is clean.
 - The app builds, and the Sparkle signing key works.
 
 Next it writes plain-language release notes for users from merged pull requests and commits. It uses Claude Code's command-line tool (`claude`) with your Claude login, and shows the notes in Terminal. Without Claude Code, it opens a raw draft in TextEdit instead. It then asks you to type the version to confirm, or `e` to edit the notes first. After that:

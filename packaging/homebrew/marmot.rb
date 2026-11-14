@@ -1,5 +1,5 @@
 # Homebrew cask for Marmot.
-# Lives in the tap repo: github.com/Kasakir-AI/homebrew-marmot (Casks/marmot.rb)
+# Lives in the tap repo: github.com/Kasakir-AI/homebrew-tap (Casks/marmot.rb)
 # Regenerate for each release with: sh scripts/make-cask.sh
 cask "marmot" do
   version "4.1.0"
