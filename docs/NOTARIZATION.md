@@ -46,7 +46,7 @@ The final zip (post-staple) is what gets the Sparkle EdDSA signature, the GitHub
 
 - Remove the "Open Anyway" section from the README and the cask caveats.
 - Sparkle is unaffected: EdDSA signing is independent, and Sparkle 2 works fine under the hardened runtime.
-- The Makefile can automate all of this behind a `SIGN_ID` variable — ad-hoc when unset (contributors), Developer ID when set (releases). Ask Claude to wire it up when you've enrolled.
+- The Makefile can automate all of this behind a `SIGN_ID` variable — ad-hoc when unset (contributors), Developer ID when set (releases). Wire it up once you've enrolled.
 
 ## Troubleshooting
 

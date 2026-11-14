@@ -80,7 +80,7 @@ Or double-click `scripts/Release Marmot.command` in Finder.
 - The Homebrew tap (`../homebrew-tap`, shared with other Kasakir-AI apps) is clean.
 - The app builds, and the Sparkle signing key works.
 
-Next it writes plain-language release notes for users from merged pull requests and commits. It uses Claude Code's command-line tool (`claude`) with your Claude login, and shows the notes in Terminal. Without Claude Code, it opens a raw draft in TextEdit instead. It then asks you to type the version to confirm, or `e` to edit the notes first. After that:
+Next it writes plain-language release notes for users from merged pull requests and commits and shows them in Terminal. It can use an optional notes writer: any command that reads a prompt on standard input and prints Markdown, set in `$NOTES_WRITER` or on one line in `.release-notes-writer` (not committed). Without one, it opens a raw draft in TextEdit for you to rewrite. It then asks you to type the version to confirm, or `e` to edit the notes first. After that:
 1. Bumps `VERSION` and builds the zip.
 2. Signs the feed entry, with the notes shown in the in-app update window.
 3. Updates the cask and adds the notes to `CHANGELOG.md`.

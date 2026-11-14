@@ -20,7 +20,7 @@ set -Eeuo pipefail
 "$BASH" -n "$0" || { echo "release.sh has a syntax error for this bash ($BASH_VERSION)."; exit 1; }
 cd "$(dirname "$0")/.."
 # Finder/Terminal launches can miss Homebrew's folder (where gh lives) and
-# ~/.local/bin (where Claude Code's installer puts `claude`).
+# ~/.local/bin (where some command-line tools install themselves).
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH:$HOME/.local/bin"
 
 BUMP="${1:-patch}"
@@ -159,13 +159,22 @@ print(".".join(map(str, new)))
 PY
 }
 
-# Rewrites the draft (file $1) into plain-language notes for users, using
-# Claude Code's command-line tool and your Claude login. Prints the notes;
-# fails (so the caller falls back to the draft) if Claude Code isn't
-# installed or signed in, takes over 5 minutes, or returns something odd.
+# The optional notes writer: a command that reads a prompt on standard input
+# and prints Markdown. Set it in $NOTES_WRITER or in .release-notes-writer
+# (one line, kept out of git). Prints nothing when none is set up.
+notes_writer() {
+    if [ -n "${NOTES_WRITER:-}" ]; then printf '%s\n' "$NOTES_WRITER"
+    elif [ -s .release-notes-writer ]; then grep -v '^[[:space:]]*#' .release-notes-writer | sed '/^[[:space:]]*$/d' | head -1
+    fi
+}
+
+# Rewrites the draft (file $1) into plain-language notes for users with the
+# notes writer. Prints the notes; fails (so the caller falls back to the draft)
+# if no writer is set up, it fails, takes over 5 minutes, or returns something odd.
 rewrite_notes() {
-    local draft="$1" dir
-    command -v claude >/dev/null 2>&1 || return 1
+    local draft="$1" dir writer
+    writer=$(notes_writer)
+    [ -n "$writer" ] || return 1
     dir=$(mktemp -d)
     {
         cat <<'TXT'
@@ -192,12 +201,10 @@ TXT
         cat "$draft"
         echo "</changes>"
     } > "$dir/prompt.txt"
-    # Runs in an empty folder so nothing from this repo is loaded, with no
-    # tool permissions: it only reads the text piped in and writes notes.
+    # Runs in an empty folder so nothing from this repo is loaded: the writer
+    # only reads the text piped in and prints notes.
     if ! (cd "$dir" && perl -e 'alarm shift @ARGV; exec @ARGV' 300 \
-            claude -p "Write the release notes as instructed in the input." \
-            --permission-mode dontAsk --output-format text \
-            < prompt.txt > notes.md 2> error.log); then
+            bash -c "$writer" < prompt.txt > notes.md 2> error.log); then
         rm -rf "$dir"
         return 1
     fi
@@ -341,7 +348,7 @@ fi
 # ---------------------------------------------------------------- notes
 if [ ! -s "$FINAL" ]; then
     # Write notes unless there are some already for this exact commit. An
-    # unedited raw draft (Claude Code was unavailable) is retried, and notes
+    # unedited raw draft (the notes writer was unavailable) is retried, and notes
     # from an earlier run are rewritten once new commits have landed.
     if [ -s "$NOTES" ] && [ "$(cat "$NOTES_FOR" 2>/dev/null)" != "$(git rev-parse HEAD)" ]; then
         warn "There are new commits since these notes were written, so they're being rewritten."
@@ -350,17 +357,17 @@ if [ ! -s "$FINAL" ]; then
     if [ ! -s "$NOTES" ] || { grep -q '^<!-- Draft notes' "$NOTES" \
             && { [ ! -s "$DRAFT" ] || cmp -s "$NOTES" "$DRAFT"; }; }; then
         draft_notes > "$DRAFT"
-        say "Writing release notes for users (Claude Code)"
+        say "Writing release notes for users"
         if rewrite_notes "$DRAFT" > "$NOTES.tmp"; then
             mv "$NOTES.tmp" "$NOTES"
             ok "Written"
         else
             rm -f "$NOTES.tmp"
             cp "$DRAFT" "$NOTES"
-            if command -v claude >/dev/null 2>&1; then
-                warn "Claude Code couldn't write them (is it signed in? run: claude). Using the raw draft."
+            if [ -n "$(notes_writer)" ]; then
+                warn "The notes writer couldn't write them. Using the raw draft."
             else
-                warn "Claude Code isn't installed, so here's the raw draft to rewrite yourself."
+                warn "No notes writer is set up (see CONTRIBUTING.md), so here's the raw draft to rewrite yourself."
             fi
         fi
     fi
