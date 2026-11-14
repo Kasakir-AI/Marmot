@@ -64,12 +64,12 @@ Classic, Ocean, Bubblegum, Meadow, and Sorbet all work with the new material.
 ##### ⚠️ Requires macOS 26 (Tahoe) or later
 This is the breaking change behind the 4.0 number.
 
-**Running macOS 13–15?** You won't be offered this update — Marmot will never hand you a build it can't run. [Marmot 3.2.0](https://github.com/EPeiffer94/Marmot/releases/tag/v3.2.0) remains complete and fully supported: every tool, every safety guarantee, just without the glass.
+**Running macOS 13–15?** You won't be offered this update — Marmot will never hand you a build it can't run. [Marmot 3.2.0](https://github.com/Kasakir-AI/Marmot/releases/tag/v3.2.0) remains complete and fully supported: every tool, every safety guarantee, just without the glass.
 
 ##### Everything from 3.x, carried forward
 Preview-first cleaning with dry runs and one-click Undo · the explainable health score with its full receipt · Startup Sentinel with suspicious-item detection · Disk Time Travel · Marmot Wrapped · drag-to-uninstall · a hardened safety gate with a hostile-path test suite.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 3.2.0 (2026-07-22)
@@ -93,7 +93,7 @@ Trash-first cleaning frees nothing until the Trash empties — so Marmot now tel
 ##### ✨ Also
 Smart Scan and freed-this-week in the menu bar popover · live Full Disk Access status in onboarding · a What's New sheet after each update (like this one!) · disk-full warnings now point at the biggest wins.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below. macOS 13+.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below. macOS 13+.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 3.1.0 (2026-07-21)
@@ -114,7 +114,7 @@ CPU and memory cards carry a rolling 60-second history, so spikes are visible in
 ##### 🔔 Health alerts
 New in Settings: get a notification when your health score drops below a threshold you choose — naming the exact factor responsible. At most one alert per 6 hours; off by default.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below. macOS 13+.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below. macOS 13+.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 3.0.4 (2026-07-21)
@@ -127,7 +127,7 @@ No new buttons — just a healthier codebase:
 - 🧹 Big views split into focused files; the three scan screens unified into one component (Duplicates gained rolling-digit progress everywhere)
 - 🧪 Test suite reorganized into focused files — all 28 tests green
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 3.0.3 (2026-07-21)
@@ -161,12 +161,12 @@ Scrub your folder history and watch the treemap morph; share your cleaning year 
 Drag any app onto the window or Dock icon to uninstall it. A visible drop target shows the way. After every clean: a freed-space toast with **one-click Undo**. Honest progress bars, ⌘1–⌘9 tool shortcuts, and Marmot reopens where you left off.
 
 ##### 🔒 Hardened
-Strict POSIX quoting everywhere a filename touches a shell command, NUL-byte rejection in the safety gate, a hostile-path test suite on every CI run, and a public [threat model](https://github.com/EPeiffer94/Marmot/blob/main/SECURITY.md).
+Strict POSIX quoting everywhere a filename touches a shell command, NUL-byte rejection in the safety gate, a hostile-path test suite on every CI run, and a public [threat model](https://github.com/Kasakir-AI/Marmot/blob/main/SECURITY.md).
 
 ##### ♿ + 📸
 VoiceOver support begins (treemap and change plans speak properly), and the README got real screenshots plus an honest comparison table.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below. macOS 13+.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below. macOS 13+.
 Free forever — no upsells, no license keys, no telemetry. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 2.8.2 (2026-07-20)
@@ -179,7 +179,7 @@ Free forever — no upsells, no license keys, no telemetry. If Marmot saved your
 
 - 🎨 **Fixed: the accent color picker now actually applies.** A macOS quirk (KVO ignores dot-namespaced UserDefaults keys) meant your chosen pastel never reached the main window until relaunch. Pick a color in Settings and watch the Smart Scan and Review buttons follow, instantly — including in the standalone ⌘, Settings window.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 2.8.0 (2026-07-20)
@@ -192,7 +192,7 @@ Marmot now watches your launch agent and daemon folders and **notifies you the d
 ##### 🔒 Security hardening
 - Every filename and app name spliced into a shell command now goes through strict POSIX quoting — a hostile filename can no longer break or inject into Time Capsule archives or launch-item removal commands.
 - The safety gate now rejects NUL-byte path tricks, and a new hostile-path test suite hammers it with traversal, case, and encoding attacks on every CI run.
-- New [SECURITY.md](https://github.com/EPeiffer94/Marmot/blob/main/SECURITY.md) documents the full threat model. Researchers welcome.
+- New [SECURITY.md](https://github.com/Kasakir-AI/Marmot/blob/main/SECURITY.md) documents the full threat model. Researchers welcome.
 
 ##### 🎨 Your Marmot, your pastel
 Pick the app-wide accent color in Settings — six signature pastels, mint by default.
@@ -203,7 +203,7 @@ Treemap tiles and change-plan rows now speak properly: "Spotify cache, Low risk,
 ##### 📸 Also
 The README got real screenshots and an honest comparison table vs. CleanMyMac, AppCleaner, and DaisyDisk.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 2.7.2 (2026-07-20)
@@ -218,7 +218,7 @@ A fit-and-finish pass to make Marmot a joy to use:
 - 📊 **Honest progress** — Duplicates shows a real progress bar ("Comparing 214 of 1,032 candidates"); Big Files shows a live running total while it hunts. Cancelling a scan now returns you to the start screen instead of a false "nothing found."
 - ⚖️ Also new in the README: an honest comparison table vs. CleanMyMac, AppCleaner, and DaisyDisk.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 2.7.1 (2026-07-17)
@@ -230,7 +230,7 @@ Two quality-of-life fixes reported by a user (thank you! 💚):
 - 📌 **Steady menu bar** — the CPU % readout no longer shifts sideways when usage crosses from single to double digits. Single digits are now padded to a fixed width, so the menu bar stays perfectly still.
 - 👀 **Clearer call to action** — after a scan, the next step is now obvious: the eye icon in **Duplicates**, **Cleanup**, and **Big Files** is now a prominent filled button with visible text ("Review & Remove…" / "Review Selected…"). Same safe preview-first flow, much easier to find.
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 2.7.0 (2026-07-17)
@@ -252,7 +252,7 @@ Drop any app onto the Marmot window **or its Dock icon** and jump straight to a 
 - Folder history API in FolderTrends powering Time Travel
 - Appcast generator now replaces same-version entries (no more duplicate-entry signing mixups like 2.6.0)
 
-**Install:** `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below.
+**Install:** `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below.
 Free forever. If Marmot saved your disk, [tip the marmot ☕](https://ko-fi.com/kasakir)
 
 ## 2.6.0 (2026-07-17)
@@ -272,7 +272,7 @@ Leftover data from long-gone apps now shows *where it came from* when macOS's in
 
 ##### 📦 Update
 On 2.1+? **Check for Updates…** and you're done. ✨
-New? `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below. macOS 13+.
+New? `brew install --cask kasakir-ai/tap/marmot` — or grab the zip below. macOS 13+.
 
 ---
 💛 Free forever. Tip jar: [ko-fi.com/kasakir](https://ko-fi.com/kasakir) or Settings → Support.
@@ -286,7 +286,7 @@ New? `brew install --cask EPeiffer94/marmot/marmot` — or grab the zip below. m
 Marmot is now one command away:
 
 ```sh
-brew install --cask EPeiffer94/marmot/marmot
+brew install --cask kasakir-ai/tap/marmot
 ```
 
 ##### 🪄 The palette got smart
@@ -521,7 +521,7 @@ Unzip, drag Marmot.app to Applications. First launch: macOS will balk (free soft
 
 Requires macOS 13+. Upgrading? Just replace the old Marmot.app.
 
-**Full Changelog**: https://github.com/EPeiffer94/Marmot/compare/v1.1.1...v1.2.0
+**Full Changelog**: https://github.com/Kasakir-AI/Marmot/compare/v1.1.1...v1.2.0
 
 ## 1.1.1 (2026-07-07)
 
