@@ -86,7 +86,7 @@ Next it writes plain-language release notes for users from merged pull requests 
 3. Updates the cask and adds the notes to `CHANGELOG.md`.
 4. Pushes the tag and publishes the GitHub release with the zip.
 5. Checks that the download matches, then pushes main, which publishes the feed.
-6. Updates the tap and confirms the new and old feed addresses and the cask.
+6. Updates the tap and confirms the update feed and the cask.
 
 If a step fails, it says whether users are affected; `make ship RESUME=1` continues from there.
 

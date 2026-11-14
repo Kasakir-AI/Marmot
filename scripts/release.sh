@@ -27,7 +27,6 @@ BUMP="${1:-patch}"
 MODE="${2:-}"            # "", "dry" or "resume"
 REPO="Kasakir-AI/Marmot"
 FEED="https://raw.githubusercontent.com/Kasakir-AI/Marmot/main/appcast.xml"
-OLD_FEED="https://raw.githubusercontent.com/EPeiffer94/Marmot/main/appcast.xml"
 TAP_RAW="https://raw.githubusercontent.com/Kasakir-AI/homebrew-tap/main/Casks/marmot.rb"
 TAP_DIR="../homebrew-tap"
 EXPECTED_EMAIL="214017273+Kasakir-AI@users.noreply.github.com"
@@ -548,11 +547,6 @@ if eventually "$FEED" "<sparkle:shortVersionString>$NEW</sparkle:shortVersionStr
     ok "Update feed lists $NEW"
 else
     warn "The update feed doesn't show $NEW yet. Check $FEED in a few minutes."
-fi
-if eventually "$OLD_FEED" "<sparkle:shortVersionString>$NEW</sparkle:shortVersionString>"; then
-    ok "The old EPeiffer94 feed address shows $NEW too (Marmot 4.0.0 and older use it)"
-else
-    warn "The old EPeiffer94 feed address doesn't show $NEW. If someone took that username, older installs can't update."
 fi
 if eventually "$TAP_RAW" "$SHA"; then
     ok "Homebrew cask matches the zip"
