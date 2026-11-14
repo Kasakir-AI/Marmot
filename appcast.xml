@@ -6,5 +6,24 @@
     <description>Release feed for Marmot — new entries are added by scripts/make-appcast-entry.sh</description>
     <language>en</language>
     <!-- MARMOT_APPCAST_ITEMS -->
+    <item>
+      <title>Marmot 1.0.0</title>
+      <description><![CDATA[
+<p>Marmot 1.0.0 is a fresh start for the free, open-source Mac cleaner that shows you everything before it changes anything. It's the same app, with a new version number and a clean release history.</p>
+<ul>
+<li><strong>Clean:</strong> Cleanup, Autopilot, Duplicates and Big Files free up space. Every change is a plan you review first, with a dry run, and removals go to the Trash so you can restore them from History.</li>
+<li><strong>Apps:</strong> the Uninstaller removes apps along with their leftovers, with Reset and Time Capsule. Unused Apps and App Updates help with the rest.</li>
+<li><strong>System:</strong> Disk Map, Startup Items, Maintenance, Live Status and the menu bar monitor show what's happening on your Mac.</li>
+<li><strong>Already using Marmot?</strong> This update installs over your current version and keeps your settings, History and Autopilot rules.</li>
+<li><strong>Homebrew:</strong> install with <code>brew install --cask kasakir-ai/tap/marmot</code>. If you installed from the old <code>kasakir-ai/marmot</code> tap, follow the one-time steps in the <a href="https://github.com/Kasakir-AI/homebrew-tap#moving-from-the-old-marmot-tap">tap's README</a>.</li>
+<li>Requires macOS 26 (Tahoe) or later.</li>
+</ul>
+      ]]></description>
+      <pubDate>Sat, 14 Nov 2026 18:15:01 -0500</pubDate>
+      <sparkle:version>177</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/Kasakir-AI/Marmot/releases/download/v1.0.0/Marmot-1.0.0.zip" sparkle:edSignature="DhIC8REQxSA21Q7DMY8upxdJLHQmiORplvXlrLKrUXUErFGLt/b+ouyP1Wod7K1Rs2G6h0fxVfti+APs6HueCg==" length="2483534" type="application/octet-stream" />
+    </item>
   </channel>
 </rss>
