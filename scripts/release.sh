@@ -2,10 +2,10 @@
 # One-command Marmot release: checks, version bump, build, signing, GitHub
 # release, in-app release notes, Homebrew cask and CHANGELOG.md.
 #
-#   make ship                 patch release   (4.1.0 -> 4.1.1)
-#   make ship BUMP=minor      minor release   (4.1.0 -> 4.2.0)
-#   make ship BUMP=major      major release   (4.1.0 -> 5.0.0)
-#   make ship BUMP=4.3.0      exact version
+#   make ship                 patch release   (1.0.0 -> 1.0.1)
+#   make ship BUMP=minor      minor release   (1.0.0 -> 1.1.0)
+#   make ship BUMP=major      major release   (1.0.0 -> 2.0.0)
+#   make ship BUMP=1.2.0      exact version
 #   make ship DRY=1           every check + draft notes; changes nothing
 #   make ship RESUME=1        finish a release that stopped partway
 #
@@ -153,7 +153,7 @@ if bump == "patch":   new = [parts[0], parts[1], parts[2] + 1]
 elif bump == "minor": new = [parts[0], parts[1] + 1, 0]
 elif bump == "major": new = [parts[0] + 1, 0, 0]
 elif re.fullmatch(r"\d+\.\d+\.\d+", bump): new = [int(p) for p in bump.split(".")]
-else: sys.exit(f"Not a version: {bump!r} (use patch, minor, major, or e.g. 4.2.0)")
+else: sys.exit(f"Not a version: {bump!r} (use patch, minor, major, or e.g. 1.1.0)")
 if new <= parts: sys.exit("{} is not newer than {}".format(".".join(map(str, new)), cur))
 print(".".join(map(str, new)))
 PY

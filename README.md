@@ -33,8 +33,6 @@ Or download the latest `Marmot-x.y.z.zip` from [Releases](https://github.com/Kas
 xattr -cr /Applications/Marmot.app && open /Applications/Marmot.app
 ```
 
-**On macOS 13–15?** Use [Marmot 3.2.0](https://github.com/Kasakir-AI/Marmot/releases/tag/v3.2.0), the last version that supports them. Homebrew won't install it, so download the zip from that release.
-
 ## How it works
 
 Nothing is removed without you seeing it first. Every cleanup, uninstall or maintenance task becomes a plan you can review:
@@ -74,25 +72,24 @@ Press ⌘K for the command palette (try "uninstall slack" or "files over 2gb") a
 |---|:---:|:---:|:---:|:---:|
 | 💵 **Price** | Free | Paid, from $3.33/mo | Free | $9.99 one-time |
 | 🔓 **Open source** | ✅ MIT | ❌ | ❌ | ❌ |
-| 💻 **Runs on** | macOS 26+ ¹ | macOS 11+ | macOS 15+ ² | macOS 10.13+ |
+| 💻 **Runs on** | macOS 26+ | macOS 11+ | macOS 15+ ¹ | macOS 10.13+ |
 | 🧹 **Junk & cache cleanup** | ✅ | ✅ | ❌ | ❌ |
 | 🗑️ **Uninstaller that finds leftovers** | ✅ | ✅ | ✅ | ❌ |
 | 🪞 **Duplicate finder** | ✅ | ✅ | ❌ | ❌ |
 | 🔍 **Large file finder** | ✅ | ✅ | ❌ | ✅ |
-| 🗺️ **Visual disk map** | ✅ | ✅ ³ | ❌ | ✅ |
+| 🗺️ **Visual disk map** | ✅ | ✅ ² | ❌ | ✅ |
 | ⚡ **Startup items manager** | ✅ | ✅ | ❌ | ❌ |
 | ⬇️ **App update checker** | ✅ | ✅ | ❌ | ❌ |
 | 📊 **Menu bar system monitor** | ✅ | ✅ | ❌ | ❌ |
 | 🛡️ **Malware removal** | ❌ | ✅ | ❌ | ❌ |
 | ☁️ **Cloud storage scanning** | ❌ | ✅ | ❌ | ✅ |
-| ♻️ **Can undo a removal** | ✅ ⁴ | ⚠️ Not always ⁵ | ✅ ⁶ | ❌ Deletes permanently |
+| ♻️ **Can undo a removal** | ✅ ³ | ⚠️ Not always ⁴ | ✅ ⁵ | ❌ Deletes permanently |
 
-¹ Marmot 3.2.0 still runs on macOS 13–15.\
-² AppCleaner 3.7. Older versions support macOS 10.10 through 15.\
-³ Space Lens isn't included in the CleanMyMac Basic plan.\
-⁴ Removals go to the Trash and can be restored from History. Emptying the Trash is the exception.\
-⁵ CleanMyMac's support docs say Large & Old Files removes files permanently, bypassing the Trash.\
-⁶ AppCleaner can undo the last removal.
+¹ AppCleaner 3.7. Older versions support macOS 10.10 through 15.\
+² Space Lens isn't included in the CleanMyMac Basic plan.\
+³ Removals go to the Trash and can be restored from History. Emptying the Trash is the exception.\
+⁴ CleanMyMac's support docs say Large & Old Files removes files permanently, bypassing the Trash.\
+⁵ AppCleaner can undo the last removal.
 
 Not in the table: Marmot's dry runs, scheduled cleaning, Disk Time Travel and alerts for new startup items. We haven't confirmed whether the other apps have these, so we left them out.
 

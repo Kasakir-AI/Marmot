@@ -1,7 +1,7 @@
 APP_NAME = Marmot
 # Single source of truth for the version — stamped into the bundle's
 # Info.plist at build time. Override per-invocation: make release VERSION=x.y.z
-VERSION = 4.1.0
+VERSION = 1.0.0
 BUILD_NUM = $(shell git rev-list --count HEAD 2>/dev/null || echo 1)
 BUILD_DIR = .build/release
 # Built into a .noindex folder: Spotlight skips it, so development builds never
@@ -59,7 +59,7 @@ release: bundle
 	@echo "Created $(RELEASE_ZIP) — attach it to a GitHub Release."
 
 # One-command release: checks, bump, build, sign, publish, Homebrew, changelog.
-#   make ship            (patch)    make ship BUMP=minor    make ship BUMP=4.2.0
+#   make ship            (patch)    make ship BUMP=minor    make ship BUMP=1.1.0
 #   make ship DRY=1      (checks + draft release notes only)
 #   make ship RESUME=1   (finish a release that stopped partway)
 BUMP ?= patch

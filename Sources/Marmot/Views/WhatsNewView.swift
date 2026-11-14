@@ -10,14 +10,14 @@ enum WhatsNew {
     }
 
     static let highlights: [(icon: String, text: String)] = [
-        ("doc.on.doc",
-         "Duplicates now works in folders you add, like an external drive, and checks each copy byte for byte against the one you keep."),
-        ("folder.badge.gearshape",
-         "Build folders in ~/Documents/GitHub are cleaned instead of skipped, and .iso files in Downloads are no longer selected for you."),
-        ("arrow.down.circle",
-         "App Updates finds more Sparkle updates and stops reporting ones that aren't real."),
+        ("sparkles",
+         "Marmot is now version 1.0.0: the same app, starting over with a new version number and a fresh release history."),
+        ("arrow.triangle.2.circlepath",
+         "Your settings, History and Autopilot rules carry over, and updates keep arriving automatically."),
+        ("mug",
+         "Homebrew users now install Marmot from kasakir-ai/tap. If you used the old tap, its README shows the one-time move."),
         ("checkmark.shield",
-         "Uninstalls stop if the app won't quit or the Time Capsule backup fails, and quitting the app no longer asks you where it is.")
+         "As always, nothing is removed until you've reviewed it, and everything goes to the Trash so you can restore it from History.")
     ]
 
     /// True once per updated version, never on a fresh install (onboarding

@@ -66,8 +66,8 @@ One command, from the repo folder on the maintainer's Mac:
 
 ```sh
 make ship DRY=1        # run every check and draft the release notes; changes nothing
-make ship              # patch release (e.g. 4.1.0 → 4.1.1)
-make ship BUMP=minor   # or major, or an exact version: make ship BUMP=4.2.0
+make ship              # patch release (e.g. 1.0.0 → 1.0.1)
+make ship BUMP=minor   # or major, or an exact version: make ship BUMP=1.1.0
 make ship RESUME=1     # finish a release that stopped partway
 ```
 

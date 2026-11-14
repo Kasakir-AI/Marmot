@@ -3,7 +3,7 @@
 # inserts the corresponding <item> into appcast.xml.
 #
 # Usage: sh scripts/make-appcast-entry.sh                     (uses the Makefile VERSION)
-#        sh scripts/make-appcast-entry.sh Marmot-2.1.0.zip 2.1.0
+#        sh scripts/make-appcast-entry.sh Marmot-1.1.0.zip 1.1.0
 #        NOTES_FILE=notes.md sh scripts/make-appcast-entry.sh  (adds release notes,
 #            shown in the in-app update window)
 #

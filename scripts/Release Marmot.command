@@ -21,7 +21,7 @@ echo ""
 echo "  patch  = bug fixes      (e.g. $CURRENT → next x.y.Z)"
 echo "  minor  = new features   (next x.Y.0)"
 echo "  major  = big changes    (next X.0.0)"
-echo "  or type an exact version like 4.2.0"
+echo "  or type an exact version like 1.1.0"
 echo ""
 read -r -p "Release type [patch]: " KIND
 bash scripts/release.sh "${KIND:-patch}"
