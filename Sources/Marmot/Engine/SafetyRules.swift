@@ -109,7 +109,7 @@ enum SafetyRules {
         // an embedded NUL by a C API could name a different file than the one
         // that was previewed and validated.
         guard p.hasPrefix("/"), !p.contains(".."), p.count > 1,
-              !p.contains("\0") else { return false }
+              !p.contains("\0"), !hasDotOrEmptySegment(p) else { return false }
         // Never the home dir or a bare volume/top-level path. Depth 2 must
         // stay legal — every app bundle is "/Applications/Name.app" — so the
         // real shallow-path defense is the allowlist below (a depth-2 path
@@ -182,7 +182,7 @@ enum SafetyRules {
     /// system-protected area.
     static func isAcceptableExtraRoot(_ root: String) -> Bool {
         let r = normalize(root)
-        guard r.hasPrefix("/"), !r.contains(".."), !r.contains("\0"),
+        guard r.hasPrefix("/"), !r.contains(".."), !r.contains("\0"), !hasDotOrEmptySegment(r),
               r.split(separator: "/").count >= 2,
               pathKey(r) != pathKey(home) else { return false }
         let tooBroad = [home + "/Library", "/Library", "/Applications", "/private", "/Users/Shared"]
@@ -239,6 +239,15 @@ enum SafetyRules {
             if (st.st_mode & S_IFMT) == S_IFLNK { return true }
         }
         return false
+    }
+
+    /// A "." or empty segment ("/Applications/./Utilities", "a//b"). The file
+    /// system skips them, but the prefix checks above compare text, so
+    /// ".../Application Support/./MobileSync" would not look like it is inside
+    /// MobileSync. Such a path is refused rather than rewritten.
+    static func hasDotOrEmptySegment(_ p: String) -> Bool {
+        p.split(separator: "/", omittingEmptySubsequences: false).dropFirst()
+            .contains { $0 == "." || $0.isEmpty }
     }
 
     static func normalize(_ path: String) -> String {

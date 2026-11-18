@@ -66,6 +66,27 @@ final class SafetyRulesTests: XCTestCase {
         XCTAssertFalse(SafetyRules.isSafeToRemove(""))
     }
 
+    /// Regression: a "." segment hid a protected folder from the prefix
+    /// checks while the file system still resolved it there.
+    func testDotSegmentsAreRefused() {
+        let tricks = [
+            home + "/Library/Application Support/./MobileSync/Backup",
+            home + "/Library/Application Support/./MobileSync",
+            home + "/Library/Developer/./Xcode/Archives",
+            "/Applications/./Utilities/Terminal.app",
+            "/Applications/.",
+            home + "/Library/Caches/./com.foo.bar",
+            home + "/Library/Caches//com.foo.bar/."
+        ]
+        for path in tricks {
+            XCTAssertFalse(SafetyRules.isSafeToRemove(path), "should refuse: \(path)")
+        }
+        XCTAssertFalse(SafetyRules.isAcceptableExtraRoot(home + "/Projects/./x"))
+        // Names that only start or end with a dot stay removable.
+        XCTAssertTrue(SafetyRules.isSafeToRemove(home + "/Library/Caches/.com.foo.bar"))
+        XCTAssertTrue(SafetyRules.isSafeToRemove(home + "/Library/Caches/com.foo.bar./x"))
+    }
+
     func testUserFilesModeUnlocksOnlyUserContent() {
         let document = home + "/Documents/duplicate.mov"
         XCTAssertFalse(SafetyRules.isSafeToRemove(document))
