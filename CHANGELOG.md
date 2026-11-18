@@ -2,6 +2,13 @@
 
 Every Marmot release, newest first. Downloads are on [GitHub Releases](https://github.com/Kasakir-AI/Marmot/releases).
 
+## 1.0.1 (2026-11-18)
+
+A safety fix for the protection that keeps your important files out of every cleanup.
+
+- **Protected folders stay protected, however a path is written.** Marmot checks every item again right before removing it, and never touches areas like your device backups, Documents, Photos, Mail or keychains. A path written with an extra "." in it (for example `Application Support/./MobileSync`) could slip past that last check even though it points into a protected folder. Marmot now refuses such paths outright.
+- Nothing else changes in how you use Marmot. Your settings, History and Autopilot rules are kept.
+
 ## 1.0.0 (2026-11-14)
 
 Marmot 1.0.0 is a fresh start for the free, open-source Mac cleaner that shows you everything before it changes anything. It's the same app, with a new version number and a clean release history.

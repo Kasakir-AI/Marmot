@@ -7,6 +7,21 @@
     <language>en</language>
     <!-- MARMOT_APPCAST_ITEMS -->
     <item>
+      <title>Marmot 1.0.1</title>
+      <description><![CDATA[
+<p>A safety fix for the protection that keeps your important files out of every cleanup.</p>
+<ul>
+<li><strong>Protected folders stay protected, however a path is written.</strong> Marmot checks every item again right before removing it, and never touches areas like your device backups, Documents, Photos, Mail or keychains. A path written with an extra "." in it (for example <code>Application Support/./MobileSync</code>) could slip past that last check even though it points into a protected folder. Marmot now refuses such paths outright.</li>
+<li>Nothing else changes in how you use Marmot. Your settings, History and Autopilot rules are kept.</li>
+</ul>
+      ]]></description>
+      <pubDate>Wed, 18 Nov 2026 13:41:12 -0500</pubDate>
+      <sparkle:version>181</sparkle:version>
+      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/Kasakir-AI/Marmot/releases/download/v1.0.1/Marmot-1.0.1.zip" sparkle:edSignature="2vcF/8rLlZ296bGdNm052bTFTTp4a0NO9aPgAFPxpLPyAGamJ4VYAIN76tAOXIAg52HkcbHF8fickWQl2Ht/DA==" length="2483733" type="application/octet-stream" />
+    </item>
+    <item>
       <title>Marmot 1.0.0</title>
       <description><![CDATA[
 <p>Marmot 1.0.0 is a fresh start for the free, open-source Mac cleaner that shows you everything before it changes anything. It's the same app, with a new version number and a clean release history.</p>
