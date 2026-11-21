@@ -17,7 +17,7 @@ Marmot cleans caches and junk, uninstalls apps along with their leftovers, finds
 
 ## Install
 
-Requires macOS 26 (Tahoe) or later.
+Requires an Apple Silicon Mac with macOS 26 (Tahoe) or later.
 
 ```sh
 brew install --cask kasakir-ai/tap/marmot

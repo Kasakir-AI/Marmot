@@ -557,19 +557,19 @@ run_step tap             "Update the Homebrew tap"
 # ---------------------------------------------------------------- final checks
 STEP="final checks"
 say "Final checks (GitHub can take a few minutes to serve new files)"
-SHA=$(shasum -a 256 "$ZIP" | awk '{print $1}')
+SHA=$(shasum -a 256 "$DMG" | awk '{print $1}')
 if eventually "$FEED" "<sparkle:shortVersionString>$NEW</sparkle:shortVersionString>"; then
     ok "Update feed lists $NEW"
 else
     warn "The update feed doesn't show $NEW yet. Check $FEED in a few minutes."
 fi
 if eventually "$TAP_RAW" "$SHA"; then
-    ok "Homebrew cask matches the zip"
+    ok "Homebrew cask matches the disk image"
 else
-    warn "The Homebrew cask doesn't match the zip yet. Check $TAP_RAW in a few minutes."
+    warn "The Homebrew cask doesn't match the disk image yet. Check $TAP_RAW in a few minutes."
 fi
 
-# The zip is safely on GitHub (checked above); don't let them pile up here.
+# The verified downloads are available on GitHub.
 rm -f "$ZIP" "$DMG" "$DRAFT" "$NOTES" "$FINAL" "$NOTES_FOR" "$STATE" .build/notes-commits.tsv .build/notes-prs.json
 trap - ERR
 say "Marmot $NEW is released"
