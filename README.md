@@ -25,13 +25,7 @@ brew install --cask kasakir-ai/tap/marmot
 
 Installed from the old `kasakir-ai/marmot` tap? See [moving from the old tap](https://github.com/Kasakir-AI/homebrew-tap#moving-from-the-old-marmot-tap).
 
-Or download the latest `Marmot-x.y.z.zip` from [Releases](https://github.com/Kasakir-AI/Marmot/releases), unzip it, and drag Marmot.app into Applications.
-
-**First launch:** Marmot isn't notarized by Apple, so macOS blocks it once. Open it, click **Done** (not Move to Trash), then go to **System Settings → Privacy & Security** and click **Open Anyway**. Or run this in Terminal:
-
-```sh
-xattr -cr /Applications/Marmot.app && open /Applications/Marmot.app
-```
+Or download the latest disk image from [Releases](https://github.com/Kasakir-AI/Marmot/releases), open it, and drag Marmot into Applications. The release is signed with Developer ID and notarized by Apple.
 
 ## How it works
 

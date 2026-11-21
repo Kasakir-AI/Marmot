@@ -318,10 +318,15 @@ fi
 
 TAG="v$NEW"
 ZIP="Marmot-$NEW.zip"
+DMG="Marmot-$NEW.dmg"
 DRAFT=".build/release-notes-$NEW.draft.md"   # raw: PR titles, commits
 NOTES=".build/release-notes-$NEW.md"         # what will be published (before confirming)
 FINAL=".build/release-notes-$NEW.final.md"   # locked in once you confirm
 NOTES_FOR=".build/release-notes-$NEW.commit" # the commit the notes describe
+
+source scripts/macos-notary.sh
+xcrun notarytool history --keychain-profile "$MACOS_NOTARY_PROFILE" >/dev/null
+ok "Developer ID and notarization are available"
 
 # Build now, before anything changes, so a broken build never leaves a
 # pushed version bump behind. The real build later reuses this work.
@@ -493,29 +498,32 @@ do_tag() {
 
 do_github_release() {
     if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
-        if ! gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name' | grep -qxF "$ZIP"; then
-            gh release upload "$TAG" "$ZIP" --repo "$REPO" >/dev/null
-        fi
+        local asset
+        for asset in "$ZIP" "$DMG"; do
+            if ! gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name' | grep -qxF "$asset"; then
+                gh release upload "$TAG" "$asset" --repo "$REPO" >/dev/null
+            fi
+        done
     else
-        gh release create "$TAG" "$ZIP" --repo "$REPO" --title "Marmot $NEW" \
+        gh release create "$TAG" "$ZIP" "$DMG" --repo "$REPO" --title "Marmot $NEW" \
             --notes-file "$FINAL" >/dev/null
     fi
     ok "https://github.com/$REPO/releases/tag/$TAG"
 }
 
 do_verify_download() {
-    local url dl sha i
-    url="https://github.com/$REPO/releases/download/$TAG/$ZIP"
-    sha=$(shasum -a 256 "$ZIP" | awk '{print $1}')
+    local asset url dl i
     dl=$(mktemp)
-    for i in 1 2 3 4 5 6; do
-        curl -fsSL -o "$dl" "$url" 2>/dev/null && break
-        sleep 5
+    for asset in "$ZIP" "$DMG"; do
+        url="https://github.com/$REPO/releases/download/$TAG/$asset"
+        for i in 1 2 3 4 5 6; do
+            curl -fsSL -o "$dl" "$url" 2>/dev/null && break
+            sleep 5
+        done
+        cmp -s "$dl" "$asset" || die "The downloadable $asset does not match the local build."
     done
-    [ "$(shasum -a 256 "$dl" | awk '{print $1}')" = "$sha" ] \
-        || die "The downloadable zip doesn't match the one built here."
     rm -f "$dl"
-    ok "The release download matches the zip built here"
+    ok "Both downloads match the local build"
 }
 
 do_push_main() {
@@ -541,7 +549,7 @@ run_step cask            "Update the Homebrew cask"
 run_step changelog       "Add $NEW to CHANGELOG.md"
 run_step commit          "Commit the feed, cask and changelog"
 run_step tag             "Tag $TAG"
-run_step github_release  "Publish the GitHub release with the zip"
+run_step github_release  "Publish the GitHub release with the ZIP and disk image"
 run_step verify_download "Check the download"
 run_step push_main       "Push main (users start getting the update now)"
 run_step tap             "Update the Homebrew tap"
@@ -562,7 +570,7 @@ else
 fi
 
 # The zip is safely on GitHub (checked above); don't let them pile up here.
-rm -f "$ZIP" "$DRAFT" "$NOTES" "$FINAL" "$NOTES_FOR" "$STATE" .build/notes-commits.tsv .build/notes-prs.json
+rm -f "$ZIP" "$DMG" "$DRAFT" "$NOTES" "$FINAL" "$NOTES_FOR" "$STATE" .build/notes-commits.tsv .build/notes-prs.json
 trap - ERR
 say "Marmot $NEW is released"
 echo "  https://github.com/$REPO/releases/tag/$TAG"

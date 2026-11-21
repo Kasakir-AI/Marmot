@@ -13,6 +13,7 @@ DerivedData/
 
 # Release artifacts
 *.zip
+*.dmg
 AppIcon.iconset/
 docs/show-hn-draft.md
 

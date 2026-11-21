@@ -2,6 +2,10 @@
 
 Every Marmot release, newest first. Downloads are on [GitHub Releases](https://github.com/Kasakir-AI/Marmot/releases).
 
+## 1.0.2 (2026-11-21)
+
+- Marmot is signed with Developer ID and notarized by Apple. The new disk image opens through the normal macOS security checks.
+
 ## 1.0.1 (2026-11-18)
 
 A safety fix for the protection that keeps your important files out of every cleanup.

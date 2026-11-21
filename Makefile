@@ -1,7 +1,7 @@
 APP_NAME = Marmot
 # Single source of truth for the version — stamped into the bundle's
 # Info.plist at build time. Override per-invocation: make release VERSION=x.y.z
-VERSION = 1.0.1
+VERSION = 1.0.2
 BUILD_NUM = $(shell git rev-list --count HEAD 2>/dev/null || echo 1)
 BUILD_DIR = .build/release
 # Built into a .noindex folder: Spotlight skips it, so development builds never
@@ -11,6 +11,7 @@ BUNDLE = $(OUT_DIR)/$(APP_NAME).app
 LSREGISTER = /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
 CONTENTS = $(BUNDLE)/Contents
 RELEASE_ZIP = $(APP_NAME)-$(VERSION).zip
+RELEASE_DMG = $(APP_NAME)-$(VERSION).dmg
 
 .PHONY: all build bundle run release ship clean
 
@@ -51,12 +52,9 @@ bundle: build
 run: bundle
 	open $(BUNDLE)
 
-# Distributable zip for GitHub Releases. ditto preserves the code signature
-# and resource forks (plain zip can corrupt .app bundles).
+# GitHub release downloads: a notarized disk image and a Sparkle update ZIP.
 release: bundle
-	rm -f $(RELEASE_ZIP)
-	ditto -c -k --keepParent $(BUNDLE) $(RELEASE_ZIP)
-	@echo "Created $(RELEASE_ZIP) — attach it to a GitHub Release."
+	bash scripts/package-release.sh "$(BUNDLE)" "$(RELEASE_ZIP)" "$(RELEASE_DMG)"
 
 # One-command release: checks, bump, build, sign, publish, Homebrew, changelog.
 #   make ship            (patch)    make ship BUMP=minor    make ship BUMP=1.1.0

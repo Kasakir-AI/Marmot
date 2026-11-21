@@ -39,13 +39,6 @@ cask "marmot" do
     "~/Library/Preferences/dev.marmot.app.plist",
     "~/Library/Saved Application State/dev.marmot.app.savedState",
   ]
-
-  caveats <<~CAVEATS
-    Marmot is not notarized (free community software). On first launch:
-    System Settings → Privacy & Security → "Open Anyway".
-    Or clear quarantine directly:
-      xattr -cr /Applications/Marmot.app
-  CAVEATS
 end
 EOF
 
