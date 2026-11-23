@@ -10,7 +10,4 @@ enum Support {
     /// Fill in after enrolling at https://github.com/sponsors — the in-app
     /// button shows up automatically once this is non-nil.
     static let sponsorsURL: URL? = URL(string: "https://github.com/sponsors/Kasakir-AI")
-
-    /// Ko-fi tip jar.
-    static let coffeeURL: URL? = URL(string: "https://ko-fi.com/kasakir")
 }
