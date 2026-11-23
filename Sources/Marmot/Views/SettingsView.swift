@@ -60,6 +60,13 @@ struct SettingsView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(.pink)
                 }
+                if let url = Support.coffeeURL {
+                    Button {
+                        NSWorkspace.shared.open(url)
+                    } label: {
+                        Label("Buy a Coffee", systemImage: "cup.and.saucer")
+                    }
+                }
             }
             Toggle("I already support Marmot (hides the occasional nudge)", isOn: $supporter)
                 .font(.caption)

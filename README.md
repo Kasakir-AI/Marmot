@@ -120,7 +120,7 @@ The app is built in `build.noindex/Marmot.app`. Spotlight skips folders whose na
 
 ## Support
 
-Marmot is free and will stay that way. If it helped you, you can [star the repo](https://github.com/Kasakir-AI/Marmot) or [sponsor on GitHub](https://github.com/sponsors/Kasakir-AI), once or monthly.
+Marmot is free and will stay that way. If it helped you, you can [star the repo](https://github.com/Kasakir-AI/Marmot), [buy me a coffee on Ko-fi](https://ko-fi.com/kasakir) or [sponsor on GitHub](https://github.com/sponsors/Kasakir-AI).
 
 ### Sponsors
 
