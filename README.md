@@ -122,6 +122,15 @@ The app is built in `build.noindex/Marmot.app`. Spotlight skips folders whose na
 
 Marmot is free and will stay that way. If it helped you, you can [star the repo](https://github.com/Kasakir-AI/Marmot) or [sponsor on GitHub](https://github.com/sponsors/Kasakir-AI), once or monthly.
 
+### Sponsors
+
+<!-- sponsors:start -->
+<!-- This section is updated automatically. Edits here are overwritten. -->
+
+No sponsors featured here yet. [Become the first](https://github.com/sponsors/Kasakir-AI)!
+All sponsors: [SPONSORS.md](https://github.com/Kasakir-AI/.github/blob/main/SPONSORS.md).
+<!-- sponsors:end -->
+
 ## License
 
 MIT. Inspired by [Mole](https://github.com/tw93/mole); not affiliated with it.
