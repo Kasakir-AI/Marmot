@@ -93,6 +93,10 @@ Checked on November 7, 2026 against each developer's website and support docs: [
 
 Marmot works without it, but some places it scans (Mail, other apps' containers) are hidden unless you grant it. Go to **System Settings → Privacy & Security → Full Disk Access**, turn on Marmot, then relaunch it.
 
+## App Management
+
+The Uninstaller needs it. macOS doesn't let one app delete another app unless you allow it. Go to **System Settings → Privacy & Security → App Management**, turn on Marmot, then quit and reopen it. Cleaning and the other tools work without it.
+
 ## Privacy and safety
 
 - Marmot never runs as root. Tasks that need admin rights are labeled and use the normal macOS password prompt.
