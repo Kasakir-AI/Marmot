@@ -2,6 +2,12 @@
 
 Every Marmot release, newest first. Downloads are on [GitHub Releases](https://github.com/Kasakir-AI/Marmot/releases).
 
+## Unreleased
+
+- The signed release can ask for Automation permission again. Startup shows your login items, and moving
+  a file to the Trash through Finder works when the direct way fails. 1.0.2 was signed without the setting that
+  lets it send these requests, so the login item list came up empty.
+
 ## 1.0.2 (2026-11-21)
 
 - Marmot is signed with Developer ID and notarized by Apple. The new disk image opens through the normal macOS security checks.

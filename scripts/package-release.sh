@@ -14,7 +14,10 @@ version="$sparkle/Versions/Current"
 sign=(codesign --force --options runtime --timestamp --sign "$MACOS_SIGN_IDENTITY")
 "${sign[@]}" "$version/XPCServices/Installer.xpc" "$version/Autoupdate" "$version/Updater.app"
 "${sign[@]}" --preserve-metadata=entitlements "$version/XPCServices/Downloader.xpc"
-"${sign[@]}" "$sparkle" "$app"
+"${sign[@]}" "$sparkle"
+"${sign[@]}" --entitlements packaging/Marmot.entitlements "$app"
+codesign -d --entitlements - --xml "$app" 2>/dev/null | grep -q com.apple.security.automation.apple-events \
+  || { echo "Marmot.app is missing the Apple Events entitlement" >&2; exit 1; }
 notarize_app "$app" "$scratch/notary.zip"
 
 ditto -c -k --sequesterRsrc --keepParent "$app" "$scratch/$zip"
