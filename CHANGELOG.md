@@ -2,6 +2,11 @@
 
 Every Marmot release, newest first. Downloads are on [GitHub Releases](https://github.com/Kasakir-AI/Marmot/releases).
 
+## 1.0.3 (2026-11-26)
+
+- **Startup items work again in the downloaded app.** Marmot 1.0.2 couldn't ask macOS for permission to read your login items, so the list came up empty. Marmot can now ask, and the one-time Automation prompt appears the first time you open Startup.
+- **Moving files to the Trash is more reliable.** When Marmot can't move something to the Trash directly, it asks Finder to do it. That fallback was blocked in 1.0.2 and works again.
+
 ## 1.0.2 (2026-11-21)
 
 - Marmot is signed with Developer ID and notarized by Apple. The new disk image opens through the normal macOS security checks.
