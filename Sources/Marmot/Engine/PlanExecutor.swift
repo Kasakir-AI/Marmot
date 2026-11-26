@@ -186,7 +186,7 @@ final class PlanExecutor {
             // same restriction, so asking it only produces a jarring "can't be
             // completed" modal and still fails. Skip Finder here and give the
             // one actionable instruction directly.
-            if isPermissionError(error) && isUnderHome(path) {
+            if isPermissionError(error) && isUnderHome(path) && !isAppBundle(path) {
                 return ItemResult(item: item, outcome: .failed,
                                   detail: "Needs Full Disk Access. Grant it to Marmot in System Settings → "
                                         + "Privacy & Security → Full Disk Access, relaunch Marmot, and re-run.")
@@ -208,14 +208,25 @@ final class PlanExecutor {
                                     : "Moved to Trash via Finder.",
                                   trashedTo: trashedTo)
             }
-            let hint = finder.stderr.contains("-1743")
-                ? " Allow Marmot to control Finder in System Settings → Privacy & Security → Automation, then retry."
-                : (isPermissionError(error)
-                    ? " This is usually Full Disk Access: grant it in System Settings → Privacy & Security, then retry."
-                    : "")
+            let hint = failureHint(path: path, permissionError: isPermissionError(error),
+                                   finderStderr: finder.stderr)
             return ItemResult(item: item, outcome: .failed,
                               detail: (error.localizedDescription + hint))
         }
+    }
+
+    /// What to tell the user when an item couldn't be moved to the Trash, even through Finder.
+    static func failureHint(path: String, permissionError: Bool, finderStderr: String) -> String {
+        if finderStderr.contains("-1743") {
+            return " Allow Marmot to control Finder in System Settings → Privacy & Security → Automation, then retry."
+        }
+        guard permissionError else { return "" }
+        if isAppBundle(path) { return " " + Permissions.appManagementHint }
+        return " This is usually Full Disk Access: grant it in System Settings → Privacy & Security, then retry."
+    }
+
+    private static func isAppBundle(_ path: String) -> Bool {
+        path.hasSuffix(".app") || path.hasSuffix(".app/")
     }
 
     private static func isUnderHome(_ path: String) -> Bool {

@@ -17,6 +17,17 @@ enum Permissions {
         NSWorkspace.shared.open(url)
     }
 
+    /// App Management: macOS blocks one app from changing or deleting another app
+    /// without it. There is no probe for it; a refused move of an .app bundle is the signal.
+    static let appManagementHint = "Needs App Management. Turn on Marmot in System Settings → "
+        + "Privacy & Security → App Management, quit and reopen Marmot, and re-run."
+
+    static func openAppManagementSettings() {
+        guard let url = URL(string:
+            "x-apple.systempreferences:com.apple.preference.security?Privacy_AppBundles") else { return }
+        NSWorkspace.shared.open(url)
+    }
+
     /// True when any plan item points into an app container — the area most
     /// commonly blocked without Full Disk Access.
     static func planTouchesProtectedContainers(_ items: [ChangeItem]) -> Bool {

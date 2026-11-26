@@ -417,6 +417,10 @@ struct ResultsView: View {
             }
             .padding()
 
+            if result.failures.contains(where: { $0.detail.contains(Permissions.appManagementHint) }) {
+                appManagementBanner
+            }
+
             List(result.results) { r in
                 HStack(alignment: .top, spacing: 8) {
                     Image(systemName: r.outcome.icon)
@@ -462,6 +466,23 @@ struct ResultsView: View {
                 Text(title).font(.caption).foregroundStyle(.secondary)
             }
         }
+    }
+
+    private var appManagementBanner: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "exclamationmark.shield")
+                .foregroundStyle(.orange)
+            Text("macOS stopped Marmot from removing an app. Turn on Marmot under App Management, "
+                + "quit and reopen Marmot, and run the uninstall again.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Spacer()
+            Button("Open Settings") { Permissions.openAppManagementSettings() }
+                .controlSize(.small)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(Color.orange.opacity(0.10))
     }
 
 }
