@@ -2,6 +2,10 @@
 
 Every Marmot release, newest first. Downloads are on [GitHub Releases](https://github.com/Kasakir-AI/Marmot/releases).
 
+## 1.0.4 (2026-11-26)
+
+- **Clearer help when uninstalling an app is blocked.** macOS only lets Marmot remove other apps if you turn on Marmot under App Management in System Settings. When that's off, the results now say so and show an **Open Settings** button that takes you straight there. Quit and reopen Marmot after turning it on.
+
 ## 1.0.3 (2026-11-26)
 
 - **Startup items work again in the downloaded app.** Marmot 1.0.2 couldn't ask macOS for permission to read your login items, so the list came up empty. Marmot can now ask, and the one-time Automation prompt appears the first time you open Startup.

@@ -7,6 +7,19 @@
     <language>en</language>
     <!-- MARMOT_APPCAST_ITEMS -->
     <item>
+      <title>Marmot 1.0.4</title>
+      <description><![CDATA[
+<ul>
+<li><strong>Clearer help when uninstalling an app is blocked.</strong> macOS only lets Marmot remove other apps if you turn on Marmot under App Management in System Settings. When that's off, the results now say so and show an <strong>Open Settings</strong> button that takes you straight there. Quit and reopen Marmot after turning it on.</li>
+</ul>
+      ]]></description>
+      <pubDate>Thu, 26 Nov 2026 14:00:04 -0500</pubDate>
+      <sparkle:version>199</sparkle:version>
+      <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/Kasakir-AI/Marmot/releases/download/v1.0.4/Marmot-1.0.4.zip" sparkle:edSignature="2bjJD+peQ1OYD4kQywZYO6uef2KwiTzWNAEjjJPp/2L/gGXxazMZgRMibDHFHT1JjhCHp1O00MaK2GK/JcmqDw==" length="2566823" type="application/octet-stream" />
+    </item>
+    <item>
       <title>Marmot 1.0.3</title>
       <description><![CDATA[
 <ul>
